@@ -49,6 +49,9 @@ const router = createBrowserRouter(
           <Route path="in-progress" element={<SuspendedTasks />} />
           <Route path="todo" element={<SuspendedTasks />} />
           <Route path=":id" element={<SuspendedTask />} />
+          <Route path="completed/:id" element={<SuspendedTask />} />
+          <Route path="in-progress/:id" element={<SuspendedTask />} />
+          <Route path="todo/:id" element={<SuspendedTask />} />
         </Route>
 
         <Route
