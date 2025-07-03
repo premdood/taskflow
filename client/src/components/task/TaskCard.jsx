@@ -69,7 +69,9 @@ function TaskCard({ task }) {
         <div
           className={clsx("h-4 w-4 rounded-full", TASK_BG_COLORS[task.stage])}
         ></div>
-        <h4 className="line-clamp-1 text-black">{task?.title}</h4>
+        <h4 className="line-clamp-1 text-black hover:underline">
+          <Link to={`${task._id}`}>{task?.title}</Link>
+        </h4>
       </div>
 
       <span className="text-sm text-gray-600">
@@ -88,7 +90,7 @@ function TaskCard({ task }) {
 
           <div className="flex items-center gap-1 text-sm text-gray-600">
             <MdAttachFile />
-            <span>{task?.assets?.length}</span>
+            <span>{task?.assets?.length ?? 0}</span>
           </div>
 
           <div className="flex items-center gap-1 text-sm text-gray-600">

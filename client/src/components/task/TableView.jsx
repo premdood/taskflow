@@ -86,7 +86,7 @@ function TableRow({ dispatch, isAdmin, task }) {
         </div>
       </td>
 
-      <td className="min-w-25 py-2">
+      <td className="min-w-30 py-2">
         <span className="text-base text-gray-600">
           {dayjs(task.createdAt).fromNow()}
         </span>
@@ -101,7 +101,7 @@ function TableRow({ dispatch, isAdmin, task }) {
 
           <div className="flex items-center gap-1 text-sm text-gray-600">
             <MdAttachFile />
-            <span>{task?.assets?.length}</span>
+            <span>{task?.assets?.length ?? 0}</span>
           </div>
 
           <div className="flex items-center gap-1 text-sm text-gray-600">

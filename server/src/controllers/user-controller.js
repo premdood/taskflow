@@ -4,7 +4,6 @@ import Notification from "../models/Notification.js";
 import Task from "../models/Task.js";
 import User from "../models/User.js";
 import { findMissingFields } from "../utils/index.js";
-import isAdminMiddleware from "../middleware/is-admin-middleware.js";
 
 const getNotificationList = async (req, res) => {
   const { userId } = req.user;
@@ -49,8 +48,11 @@ const updateProfile = async (req, res, next) => {
   const { userId } = req.user;
   const { userId: id } = req.body;
 
-  if (id !== userId) {
-    isAdminMiddleware(req, req, next);
+  if (id !== userId && !req.user.isAdmin) {
+    throw new CustomAPIError(
+      StatusCodes.FORBIDDEN,
+      "Not authorized as admin. Try login as admin."
+    );
   }
 
   const userIdToUpdate = req.user.isAdmin ? id : userId;
@@ -61,6 +63,7 @@ const updateProfile = async (req, res, next) => {
   }
 
   user.name = req.body.name || user.name;
+  user.email = req.body.email || user.email;
   user.title = req.body.title || user.title;
   user.role = req.body.role || user.role;
 
