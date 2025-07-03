@@ -6,8 +6,9 @@ function Tabs({ tabs, tabPanels, selectedIndex, changeViewAction }) {
   const [isPending, startTransition] = useTransition();
 
   const handleTabChange = () => {
-    startTransition(async () => {
-      await changeViewAction();
+    startTransition(() => {
+      console.log(changeViewAction);
+      changeViewAction();
     });
   };
 
