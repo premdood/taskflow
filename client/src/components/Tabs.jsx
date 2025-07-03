@@ -1,19 +1,9 @@
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
-import { useTransition } from "react";
-import { Loader } from "./Index";
 
-function Tabs({ tabs, tabPanels, selectedIndex, changeViewAction }) {
-  const [isPending, startTransition] = useTransition();
-
-  const handleTabChange = () => {
-    startTransition(() => {
-      changeViewAction();
-    });
-  };
-
+function Tabs({ tabs, tabPanels, selectedIndex, changeView }) {
   return (
     <div className="w-full overflow-visible px-1 sm:px-0">
-      <TabGroup selectedIndex={selectedIndex} onChange={handleTabChange}>
+      <TabGroup selectedIndex={selectedIndex} onChange={changeView}>
         <TabList className="flex flex-wrap items-center gap-2 space-x-6 rounded-xl p-1">
           {tabs.map((tab) => (
             <Tab
@@ -26,15 +16,11 @@ function Tabs({ tabs, tabPanels, selectedIndex, changeViewAction }) {
           ))}
         </TabList>
 
-        {isPending ? (
-          <Loader />
-        ) : (
-          <TabPanels className="mt-2 w-full">
-            {tabPanels.map((tabPanel, index) => (
-              <TabPanel key={index}>{tabPanel}</TabPanel>
-            ))}
-          </TabPanels>
-        )}
+        <TabPanels className="mt-2 w-full">
+          {tabPanels.map((tabPanel, index) => (
+            <TabPanel key={index}>{tabPanel}</TabPanel>
+          ))}
+        </TabPanels>
       </TabGroup>
     </div>
   );

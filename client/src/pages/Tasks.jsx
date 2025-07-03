@@ -39,7 +39,7 @@ function Tasks() {
   const selectedIndex = tasksView === "board" ? 0 : 1;
 
   const dispatch = useDispatch();
-  const changeViewAction = () => dispatch(setTasksView(newView));
+  const changeView = () => dispatch(setTasksView(newView));
 
   const location = useLocation();
   let stage = getTaskStageFromUrl(location.pathname);
@@ -80,7 +80,7 @@ function Tasks() {
         tabs={TABS}
         tabPanels={TAB_PANELS}
         selectedIndex={selectedIndex}
-        changeViewAction={changeViewAction}
+        changeView={changeView}
       />
 
       {isAdmin && <TasksPageDialogs />}

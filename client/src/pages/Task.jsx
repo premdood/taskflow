@@ -28,7 +28,7 @@ function Task() {
   const nextView = singleTaskView === "detail" ? "activities" : "detail";
 
   const dispatch = useDispatch();
-  const changeViewAction = () => dispatch(setSingleTaskView(nextView));
+  const changeView = () => dispatch(setSingleTaskView(nextView));
 
   if (error) {
     console.error(error);
@@ -52,7 +52,7 @@ function Task() {
         tabs={TABS}
         tabPanels={TAB_PANELS}
         selectedIndex={selectedIndex}
-        changeViewAction={changeViewAction}
+        changeView={changeView}
       />
     </div>
   );
