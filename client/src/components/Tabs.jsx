@@ -7,7 +7,6 @@ function Tabs({ tabs, tabPanels, selectedIndex, changeViewAction }) {
 
   const handleTabChange = () => {
     startTransition(() => {
-      console.log(changeViewAction);
       changeViewAction();
     });
   };
