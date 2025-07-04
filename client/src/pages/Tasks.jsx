@@ -29,7 +29,6 @@ function Tasks() {
     data: tasksResponse,
     error: tasksError,
     isLoading: tasksIsLoading,
-    isFetching: tasksIsFetching,
   } = useGetAllTaskQuery({ search: searchText });
 
   const { user } = useSelector((state) => state.auth);
@@ -45,7 +44,7 @@ function Tasks() {
   let stage = getTaskStageFromUrl(location.pathname);
   stage = stage?.charAt(0).toUpperCase() + stage?.slice(1);
 
-  if (tasksIsLoading || tasksIsFetching) {
+  if (tasksIsLoading) {
     return <Loader />;
   }
 

@@ -99,12 +99,12 @@ function TableRow({ user }) {
 
 function UsersPageTable() {
   const { searchText } = useSelector((state) => state.ui);
-  const { data, isLoading, isFetching, error } = useGetAllUsersQuery({
+  const { data, isLoading, error } = useGetAllUsersQuery({
     search: searchText,
   });
   const users = data?.data;
 
-  if (isLoading || isFetching) {
+  if (isLoading) {
     return <Loader />;
   }
 

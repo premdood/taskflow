@@ -120,7 +120,7 @@ function Trash() {
 
   const dispatch = useDispatch();
 
-  const { data, isLoading, isFetching, error } = useGetAllTaskQuery({
+  const { data, isLoading, error } = useGetAllTaskQuery({
     isTrashed: true,
     search: searchText,
   });
@@ -132,7 +132,7 @@ function Trash() {
   const [restoreAllTask] = useRestoreAllTAskMutation();
   const [deleteAllTask] = useDeleteAllTaskMutation();
 
-  if (isLoading || isFetching) {
+  if (isLoading) {
     return <Loader />;
   }
 

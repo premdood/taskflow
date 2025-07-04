@@ -19,7 +19,6 @@ function Task() {
     data: tasksResponse,
     error,
     isLoading,
-    isFetching,
   } = useGetSingleTaskQuery({ taskId });
   const task = tasksResponse?.data;
 
@@ -35,7 +34,7 @@ function Task() {
     toast.error(error?.data?.message || error?.message || error?.status);
   }
 
-  if (isLoading || isFetching) {
+  if (isLoading) {
     return <Loader />;
   }
 
