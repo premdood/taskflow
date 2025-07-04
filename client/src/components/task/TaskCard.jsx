@@ -85,12 +85,12 @@ function TaskCard({ task }) {
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-1 text-sm text-gray-600">
             <BiMessageAltDetail />
-            <span>{task?.activities?.length}</span>
+            <span>{task.activities?.length}</span>
           </div>
 
           <div className="flex items-center gap-1 text-sm text-gray-600">
             <MdAttachFile />
-            <span>{task?.assets?.length ?? 0}</span>
+            <span>{task.assets?.length}</span>
           </div>
 
           <div className="flex items-center gap-1 text-sm text-gray-600">
