@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { ErrorMessage, Field, useField } from "formik";
 import { useState } from "react";
 
-function InputBox({ as, name, placeholder, label, type }) {
+function InputBox({ as, disabled, name, placeholder, label, type }) {
   const [field, meta, helpers] = useField(name);
   const hasError = meta.touched && meta.error;
 
@@ -21,11 +21,12 @@ function InputBox({ as, name, placeholder, label, type }) {
         type={type}
         name={name}
         value={value}
+        disabled={disabled}
         onChange={(e) => setValue(e.target.value)}
         onBlur={() => helpers.setValue(value)}
         placeholder={placeholder}
         className={clsx(
-          "mb-3 w-full rounded-md border border-gray-300 px-3 py-2",
+          "mb-3 w-full rounded-md border border-gray-300 px-3 py-2 disabled:cursor-not-allowed disabled:bg-gray-100",
           hasError && "border-red-300 focus:border-red-500",
         )}
       />

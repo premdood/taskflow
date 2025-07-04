@@ -45,7 +45,7 @@ const markNotificationRead = async (req, res) => {
 };
 
 const updateProfile = async (req, res, next) => {
-  const { userId } = req.user;
+  const { userId, isAdmin } = req.user;
   const { userId: id } = req.body;
 
   if (id !== userId && !req.user.isAdmin) {
@@ -63,7 +63,7 @@ const updateProfile = async (req, res, next) => {
   }
 
   user.name = req.body.name || user.name;
-  user.email = req.body.email || user.email;
+  isAdmin && (user.email = req.body.email || user.email);
   user.title = req.body.title || user.title;
   user.role = req.body.role || user.role;
 

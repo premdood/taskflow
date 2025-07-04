@@ -7,8 +7,11 @@ import {
 } from "../../redux/slices/api/userAPISlice.js";
 import { validationSchema } from "../../validations/addUserValidation.js";
 import { Button, DialogBox, InputBox } from "../Index.jsx";
+import { useSelector } from "react-redux";
 
 function AddUser({ isOpen, setIsOpen, user }) {
+  const { isAdmin } = useSelector((state) => state.auth.user);
+
   const [updateUser] = useUpdateUserMutation();
   const [addUser] = useAddUserMutation();
 
@@ -68,6 +71,7 @@ function AddUser({ isOpen, setIsOpen, user }) {
               <InputBox
                 label="Email"
                 type="email"
+                disabled={!isAdmin}
                 name="email"
                 placeholder="your email"
               />
