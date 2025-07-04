@@ -26,6 +26,7 @@ function PasswordChangeDialog({ isOpen, setIsOpen }) {
       toast.error(err?.data?.message || err?.message || err?.status);
     } finally {
       setSubmitting(false);
+      setIsOpen(false);
     }
   };
 

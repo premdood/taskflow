@@ -84,7 +84,6 @@ const getAllTask = async (req, res) => {
   search && (query.title = { $regex: search, $options: "i" });
 
   const tasks = await Task.find(query)
-    .select("-assets")
     .populate("team", "name title role email")
     .sort({ _id: -1 });
 

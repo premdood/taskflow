@@ -137,7 +137,6 @@ const getDashboardStatistics = async (req, res) => {
 
   // fetch all tasks from the database
   const allTasks = await Task.find(query)
-    .select("-assets")
     .populate("team", "name title role email")
     .sort({ _id: -1 });
 
